@@ -1,42 +1,61 @@
 package classes;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Studenten {
 
-  private List<String> studenten = new ArrayList<>();
+  private String[] studenten;
 
   public Studenten(int anzahl) {
-    for(int i = 0; i < anzahl; i++) {
-      // adding studentes here
-    }
+    studenten  = new String[anzahl];
   }
 
   public String liefereErstenStudent() {
-    return studenten.isEmpty() ? null : studenten.get(0);
+    String student = null;
+    for (String i : studenten) {
+      if (i != null) {
+        student = i;
+        break;
+      }
+    }
+    return student;
   }
 
   public void printListe() {
-    if(studenten.isEmpty()) {
-      return;
-    }
     for (String student : studenten) {
-      System.out.println(student);
+      if (student != null) {
+        System.out.println(student);
+      }
     }
   }
 
   public void studentEntfernen(String name) {
-    studenten.remove(studenten.indexOf(name));
+    for(int i = 0; i < studenten.length; i++) {
+      if (studenten[i].equals(name)) {
+        studenten[i] = null;
+        break;
+      }
+    }
   }
 
   public boolean studentenVorhanden() {
-    return !studenten.isEmpty();
+    for (String student : studenten) {
+      if (student != null) {
+        return true;
+      }
+    }
+    return false;
   }
 
   public void studentHinzufuegen(String name) {
-    if(studenten.indexOf(name) < 0) {
-      studenten.add(name);
+    int freierIndex = -1;
+    for(int i = 0; i < studenten.length; i++) {
+      if (studenten[i].equals(name)) {
+        return;
+      } else if(studenten[i] == null && freierIndex == -1) {
+        freierIndex = i;
+      }
+    }
+    if(freierIndex != -1) {
+      studenten[freierIndex] = name;
     }
   }
 
