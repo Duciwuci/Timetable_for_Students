@@ -6,8 +6,6 @@ public class StundenplanEintrag {
   static String name;
   static boolean zufaellig;
 
-  // KP wie der Aufbau der String aussehen soll
-
   public StundenplanEintrag(int id, String name, boolean zufaellig) {
     this.id = id;
     this.name = name;
@@ -19,7 +17,7 @@ public class StundenplanEintrag {
   }
 
   public static String printAufbau() {
-    return name + ", " + id + ", " + zufaellig;
+    return "name, id, random";
   }
 
   public String toString() {
