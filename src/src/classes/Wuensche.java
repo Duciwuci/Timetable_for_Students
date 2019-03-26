@@ -12,7 +12,7 @@ public class Wuensche {
 
   public void alleBesitzerEntfernen(String besitzer) {
     for(int i = 0; i < wuensche.length; i++) {
-      if (wuensche[i].getBesitzer() == besitzer) {
+      if (wuensche[i].getBesitzer().equals(besitzer)) {
         wuensche[i] = null;
       }
     }
@@ -31,11 +31,11 @@ public class Wuensche {
     int store = 0;
     einmalig = wuensche[store];
     for(int i = 0; i < wuensche.length; i++) {
-      if(einmalig.getWunschId() == wuensche[i].getWunschId()) {
-        i = store++;
-        if(store > wuensche.length) {
-          einmalig = null;
-          break;
+      if(einmalig.getWunschId() == wuensche[i].getWunschId() && i != store) {
+        store++;
+        i = 0;
+        if(store >= wuensche.length) {
+          return null;
         }
         einmalig = wuensche[store];
       }
@@ -61,7 +61,7 @@ public class Wuensche {
         capacity++;
       }
     }
-  return Arrays.copyOfRange(besitzer, 0, capacity + 1);
+  return Arrays.copyOfRange(besitzer, 0, capacity - 1);
   }
 
   public void wunschHinzufuegen(String besitzer, int wunschId) {

@@ -46,16 +46,15 @@ public class Studenten {
   }
 
   public void studentHinzufuegen(String name) {
-    int freierIndex = -1;
     for(int i = 0; i < studenten.length; i++) {
-      if (studenten[i].equals(name)) {
+      if(studenten[i].equals(name)) {
         return;
-      } else if(studenten[i] == null && freierIndex == -1) {
-        freierIndex = i;
       }
     }
-    if(freierIndex != -1) {
-      studenten[freierIndex] = name;
+    for(int i = 0; i < studenten.length; i++) {
+      if(studenten[i] == null) {
+        studenten[i] = name;
+      }
     }
   }
 

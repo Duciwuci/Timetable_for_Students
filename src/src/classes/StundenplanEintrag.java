@@ -2,9 +2,9 @@ package classes;
 
 public class StundenplanEintrag {
 
-  static int id;
-  static String name;
-  static boolean zufaellig;
+  private int id;
+  private String name;
+  private boolean zufaellig;
 
   public StundenplanEintrag(int id, String name, boolean zufaellig) {
     this.id = id;
@@ -12,16 +12,17 @@ public class StundenplanEintrag {
     this.zufaellig = zufaellig;
   }
 
+  // nochmal überdenken
   public static String leererEintragToString(int id) {
-    return "Leer" + id;
+    return id + ";;false";
   }
 
   public static String printAufbau() {
-    return "name, id, random";
+    return "name;id;random";
   }
 
   public String toString() {
-    return name + ", " + id + ", " + zufaellig;
+    return this.name + ";" + this.id + ";" + this.zufaellig;
   }
 
 }
